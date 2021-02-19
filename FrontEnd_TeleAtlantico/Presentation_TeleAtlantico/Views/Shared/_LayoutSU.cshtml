@@ -1,0 +1,808 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Tele-Atlantico</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files css/vendor/bootstrap/css/bootstrap.min.css-->
+    <link href="~/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/css/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/css/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/css/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/css/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<div class="container">
+    <main role="main" class="pb-3">
+
+
+        @RenderBody()
+    </main>
+</div>
+
+<body>
+
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+            <div class="header-container d-flex align-items-center justify-content-between">
+                <div class="logo">
+
+
+                    @if (@HttpContextAccessor.HttpContext.Session.GetString("SessionSupervisorUI") != null)
+                    {
+
+                        <h1 class="text-light"><a href="#header"><span>Welcome  Supervisor @HttpContextAccessor.HttpContext.Session.GetString("SessionSupervisorUI")</span></a></h1>
+
+
+                    }
+                    else
+                    {
+                        <h1 class="text-light"><a href="#header"><span>TeleAtlantico  </span></a></h1>
+
+                    }
+
+
+
+                </div>
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+
+
+                        @*<li id="navprimario1" class="active"><a href="#header">Home</a></li>
+
+                            <li id="navprimario3"><a href="#services">Services</a></li>
+                            <li id="navprimario4"><a href="#contact">Contacts</a></li>*@
+
+
+                        @if (@HttpContextAccessor.HttpContext.Session.GetString("SessionSupervisorUI") != null)
+                        {
+                            <li id="navsecundario1"><a href="#registerUsers">Register</a></li>
+                            <li id="navsecundario3"><a href="#registeredRequest">Registered Requests </a></li>
+                            <li class="get-started"><a href="#login" onclick="SignOutUSU()">Sign Out</a></li>
+                        }
+
+
+
+
+
+
+                    </ul>
+
+                </nav>
+
+
+            </div><!-- End Header Container -->
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+
+
+            <h1>Welcome to Tele Atlantico </h1>
+            <h2>The best service ever.</h2>
+
+
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        </div>
+    </section><!-- End Hero -->
+
+
+
+
+
+
+    <main id="main">
+
+
+
+        <!-- ======= Services Section ======= -->
+
+
+        @if (@HttpContextAccessor.HttpContext.Session.GetString("SessionSupervisorUI") == null)
+        {
+
+            <section id="services" class="services section-bg">
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="section-title" data-aos="fade-right">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-lg-4  col-sm-4 col-md-4"></div>
+                                    <div class="col-lg-4  col-sm-4 col-md-4" data-aos="fade-right">
+
+                                        <div class="section-title">
+                                            <h2>Services </h2>
+                                            <p>We provide this services. </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4  col-sm-4  col-md-4"></div>
+
+                                </div>
+                                <div class="col-md-6 d-flex align-items-stretch">
+                                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="icon"><i class="bx bx-tv"></i></div>
+                                        <h4><a href="">Cable</a></h4>
+                                        <p>We provide this service, for more information, click above</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+                                        <div class="icon"><i class="bx bxl-internet-explorer"></i></div>
+                                        <h4><a href="">Internet</a></h4>
+                                        <p>We provide this service, for more information, click above</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-flex align-items-stretch mt-4">
+                                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+                                        <div class="icon"><i class="bx bx-phone"></i></div>
+                                        <h4><a href="">Landline</a></h4>
+                                        <p>We provide this service, for more information, click above</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-flex align-items-stretch mt-4">
+                                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
+                                        <div class="icon"><i class="bx bx-mobile"></i></div>
+                                        <h4><a href="">Mobile phone</a></h4>
+                                        <p>We provide this service, for more information, click above</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="section-title" data-aos="fade-right">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section><!-- End Services Section -->
+            <!-- ======= Contact Section ======= -->
+            <section id="contact" class="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2" data-aos="fade-right">
+                            <div class="section-title">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                            <div class="info mt-4">
+                                <i class="icofont-google-map"></i>
+                                <h4>Location:</h4>
+                                <p>A108 Adam Street, New York, NY 535022</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 mt-4">
+                                    <div class="info">
+                                        <i class="icofont-envelope"></i>
+                                        <h4>Email:</h4>
+                                        <p>info@example.com</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="info w-100 mt-4">
+                                        <i class="icofont-phone"></i>
+                                        <h4>Call:</h4>
+                                        <p>+1 5589 55488 55s</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-lg-4  col-sm-4 col-md-4"></div>
+                                        <div class="col-lg-4  col-sm-4 col-md-4" data-aos="fade-right">
+
+                                            <div class="section-title">
+                                                <h2>Contacts </h2>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-4  col-sm-4  col-md-4"></div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                        <div class="validate"></div>
+                                    </div>
+                                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                        <div class="validate"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                                </div>
+                                <div class="text-center"><button type="submit">Send Message</button></div>
+                            </form>
+                        </div>
+                        <div class="col-lg-2" data-aos="fade-right">
+                            <div class="section-title">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section><!-- End Contact Section -->
+            <!--------Login-->
+
+
+
+        }
+        @if (@HttpContextAccessor.HttpContext.Session.GetString("SessionSupervisorUI") != null)
+        {
+            <section id="registerUsers" name="login">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4" data-aos="fade-up">
+                            <div class="section-title">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+                            <div role="form" class="php-email-form mt-4">
+                                <div class="row">
+                                    <div class="col-lg-2  col-sm-2 col-md-2"></div>
+                                    <div class="col-lg-8  col-sm-8 col-md-8" data-aos="fade-right">
+
+                                        <div class="section-title">
+                                            <h2>Sign Up </h2>
+                                            <h3 id="titleTypeRole" name="titleTypeRole">  As Supervisor</h3>
+                                        </div>
+
+                                        <a id="showService" href="#serviceUser"> <i class="bx bx-phone"> </i> Add Service to Supporter</a>
+                                        <br />    <br />
+                                    </div>
+                                    <div class="col-lg-2  col-sm-2 col-md-2">
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" name="name_users" id="name_users" placeholder="Your Name " data-rule="minlen:4" data-msg="Please enter a valid email" />
+                                            <div class="validate"></div>
+                                            <hr />
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" name="first_surname" id="first_surname" placeholder=" First SurName" data-rule="minlen:4" data-msg="Please enter a valid email" />
+                                            <div class="validate"></div>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" name="second_surname" class="form-control" id="second_surname" placeholder=" Second SurName" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                            <div class="validate"></div>
+                                            <hr />
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <input type="email" class="form-control" name="email_users" id="email_users" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                            <div class="validate"></div>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            <input type="password" name="password_user" class="form-control" id="password_user" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                            <div class="validate"></div>
+                                            <hr />
+                                        </div>
+                                        <div class="col-md-6 form-group" id="TypesSupervisor">
+                                            <select class="form-control" id="TypesSupervisores" name="TypesSupervisores">
+                                            </select>
+                                            <hr />
+                                        </div>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <div id="errorMessage" class="error-message">
+                                            <i class="bx bxs-like bx-burst"></i>
+                                        </div>
+                                        <div id="informationMessage" class="sent-message"><i class="bx bx-like"></i>  </div>
+                                    </div>
+                                    <div class="row">
+
+
+
+                                        <div class="col-md-6 form-group">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="checklike" checked>
+                                                <label class="form-check-label" for="labellike" id="labellike">
+                                                    Start As Supervisor
+                                                </label>
+                                            </div>
+                                            <hr />
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <div class="form-check" id="addLikeSupervisor">
+                                                <input class="form-check-input" type="checkbox" value="1" id="addasSupervidorIInput" checked>
+                                                <label class="form-check-label" for="addasSupervidor" id="addasSupervidor">
+                                                    Asigned As Supervidor
+                                                </label>
+                                            </div>
+                                            <hr />
+                                        </div>
+
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success" onclick="insertUsuario()">Sign Up</button>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4" data-aos="fade-right">
+                            <div class="section-title">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </section>
+
+
+
+            <section id="serviceUser" name="login">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4" data-aos="fade-up">
+                            <div class="section-title">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+                            <div role="form" class="php-email-form mt-4">
+                                <div class="row">
+                                    <div class="col-lg-2  col-sm-2 col-md-2"></div>
+                                    <div class="col-lg-8  col-sm-8 col-md-8" data-aos="fade-right">
+                                        <br />
+                                        <div class="section-title">
+                                            <h2>Asigned Service</h2>
+                                            <hr />
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2  col-sm-2 col-md-2">
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <hr />
+                                    <h3> Asigned some service to Users </h3>
+                                    <hr />
+                                    <br />
+                                    <div class="row">
+
+                                        <div class="col-md-6 form-group">
+                                            Name Supporter
+                                            <select class="form-control" id="TypesSupporter" name="TypesSupporter">
+                                            </select>
+
+
+                                        </div>
+                                        <div class="col-md-6 form-group" id="typesService">
+                                            Name Services
+                                            <select class="form-control mul-selec" id="typesServices" name="typesServices">
+                                            </select>
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <br /><br />  <br /><br />  <br />
+                                    <button type="submit" class="btn btn-success" onclick="AddServiceSupporter()">Add Service</button>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4" data-aos="fade-right">
+                            <div class="section-title">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </section>
+            <!------------END------------------------>
+            <!---======Table with Information Section========--->
+
+
+            <section id="registeredRequest" class="login">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                            <div role="form" class="php-email-form mt-4">
+
+                                <div class="section-title">
+                                    <h2> Registered Requests  </h2>
+                                </div>
+
+                                <div class="row">
+                                    <div class="d-flex col 4"></div>
+                                    <div class="d-flex col 4">
+                                        <select class="form-select" onclick="filterIssue()"  id="filterIssue" name="filterIssue"  placeholder="Search" aria-label="Search"><option value="status"> STATUS</option> <option value="clasification"> CLASIFICATION</option> </select>
+
+                                    </div>
+                                    <div class="d-flex col 4"></div>
+                                </div>
+                                <br>   <br>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col"># Report</th>
+                                            <th scope="col">User Asigned</th>
+                                            <th scope="col">Clasification  </th>
+                                            <th scope="col">Status  </th>
+                                            <th scope="col">Registered </th>
+                                            <th scope="col">Actions  </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbody_issues">
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+            <section id="editRequest" class="login">
+                <div class="container">
+                    <div class="row">
+
+                        <a id="goBackfromEditRequest" href="javascript:void(0);" > Go back </a>
+
+                        <div class="col-lg-4 php-email-form mt-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="row">
+                                <div class="col-4">
+
+                                    <br /><br /><br />
+                                    <hr />
+                                    <i class="bx bx-chevron-right"></i><Label> # Reporte </Label>
+                                    <p id="showreport">  </p>
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i> <Label> Full Name Client </Label>
+                                    <p id="showfullname"> </p>
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i> <Label> Email </Label>
+                                    <p id="showemail"> </p>
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i>  <Label> Phone </Label>
+                                    <p id="showphone"> </p>
+                                    <hr />
+                                    <i class="bx bx-chevron-right"></i> <Label> Address </Label>
+                                    <p id="showaddress"> </p>
+                                    <hr />
+
+
+
+                                </div>
+                                <div class="col-4">
+
+
+                                    <center>  <h1 class="form-control"> Edit Details Request </h1></center>
+                                    <br />
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i>  <Label> Second Contact </Label>
+                                    <p id="showsecondcontact"> </p>
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i> <Label> Status Request  </Label>
+                                    <p id="showstatus"> </p>
+                                    <hr />
+
+                                    <i class="bx bx-chevron-right"></i> <Label> Contact Email requested  </Label>
+                                    <p id="showcontactemail"> </p>
+                                    <hr />
+
+
+                                    <i class="bx bx-chevron-right"></i> <Label> Contact Phone requested </Label>
+                                    <p id="showcontactphone"> </p>
+                                    <hr />
+
+
+
+                                </div>
+                                <div class="col-4">
+
+                                    <input hidden type="number" id="issue_id" name="issue_id">
+                                    <input hidden type="text" id="emailsendtoclient" name="emailsendtoclient">
+                                    <input hidden type="text" id="fullnamee" name="fullnamee">
+
+
+                                    <br /><br /><br />
+                                    <hr />
+                                    <i class="bx bx-chevron-right"></i><label>Options for edit</label>
+                                    <hr />
+
+
+
+                                    <a id="AssignedUser"> <img src="~/img/add-user.png" /> Asigned User Sopporter </a>
+
+
+                                    <div id="addUserForRequest">
+                                        <hr />
+                                        <select class="form-select" id="TypesSupporterSU" name="TypesSupporterSU">
+                                        </select>
+                                        <hr />
+                                        <button type="submit" class="btn btn-warning" onclick="changeuserasigned()"> Assigned User</button>
+                                    </div>
+
+                                    <hr />
+
+
+                                    <a href="javascript:void(0);" id="status">  <img src="~/img/loop.png" />  Update Status</a>
+                                    <div id="updateStatus" data-aos="fade-up">
+
+
+
+                                        <select class="form-select" id="statuss" name="statuss" aria-label=".form-select-lg example">
+                                            <option selected>Seleccione</option>
+                                            <option value="ASIGNADO">Asignado</option>
+                                            <option value="SIN ASIGNAR">SIN ASIGNAR</option>
+
+                                        </select>
+
+                                        <hr />
+                                        <button class="btn btn-warning" onclick="changestatus(1)"> Update Status</button>
+                                    </div>
+
+
+                                    <hr />
+                                    <a href="javascript:void(0);" id="Clasification">  <img src="~/img/loop.png" />  Update Priority</a>
+                                    <div id="updateClasification">
+                                        <select class="form-select" id="clasification" name="clasification">
+                                            <option selected>Priority</option>
+                                            <option value="ALTA">Alta</option>
+                                            <option value="MEDIA">Media</option>
+                                            <option value="BAJA">Baja</option>
+                                        </select>
+                                        <hr />
+                                        <button class="btn btn-warning" onclick="changeclasification()"> Update </button>
+                                    </div>
+
+                                    <hr />
+
+                                    <a href="javascript:void(0);" id="clickNotes" onclick="getNotes(1)">    <img src="~/img/comment.png"> Show Notes  </a>
+
+
+
+
+
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="showNotes" name="login">
+                <div class="container">
+                    <div class="row">
+                        <a id="goBackfromNotes" href="javascript:void(0);"> Go back </a>
+
+                        <div class="col-3"></div>
+                        <div class="col-6">
+                            <hr>
+                            <i class="bx bx-chevron-right"></i>  <Label> Write Note to the Supporter</Label>
+                            <hr>
+                            <textarea class="form-control" id="descriptionNotes" rows="2"></textarea>
+
+                            <input hidden id="idIssueNotes" name="idIssueNotes">
+                            <br>
+                            <button type="submit" class="btn btn-primary" onclick="addNote(1)">Add Note </button>
+
+                            <hr>
+
+                            <h4> Previws Comments</h4>
+                            <hr>
+
+                            <div class="chats">
+
+
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-3"></div>
+                        <hr />
+                    </div>
+                </div>
+            </section>
+
+
+        
+        }
+
+
+
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Bethany</h3>
+                        <p>
+                            A108 Adam Street <br>
+                            New York, NY 535022<br>
+                            United States <br><br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Bethany</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/ -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <!-- Vendor JS Files   -->
+
+    <script src="~/css/vendor/jquery/jquery.min.js"></script>
+    <script src="~/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/css/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/css/vendor/php-email-form/validate.js"></script>
+    <script src="~/css/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/css/vendor/counterup/counterup.min.js"></script>
+    <script src="~/css/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/css/vendor/venobox/venobox.min.js"></script>
+    <script src="~/css/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/css/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
+    <script src="~/js/js_user.js"></script>
+    <script src="~/js/js_service.js"></script>
+    <script src="~/js/js_supervisor.js"></script>
+    <script src="~/js/js_supporter.js"></script>
+    <script src="~/js/js_serviceSupporter.js"></script>
+    <script src="~/js/js_issue.js"></script>
+    <script src="~/js/js_issueclient.js"></script>
+    <script src="~/js/js_notes.js"></script>
+</body>
+
+</html>
