@@ -1,0 +1,116 @@
+<div *ngIf="fullname; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <main id="main">
+
+
+
+
+
+      
+        <section id="mysservices" name="login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2" data-aos="fade-up">
+                        <div class="section-title">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+
+                        <div role="form" class="php-email-form mt-4">
+
+                   
+                            <br /> <br /> <br /> <br />
+                            <div class="row">
+                                <div class="col-lg-2  col-sm-2 col-md-2"></div>
+
+                                <div class="col-lg-8  col-sm-8 col-md-8">
+
+                                    <div class="section-title">
+                                        <h2>Mys Services </h2>
+                                    </div>
+                                    <p> <a routerLink="/service">
+                                        <mat-icon mat-list-icon>add_circle</mat-icon> Contract another service
+                                    </a></p>
+
+                                </div>
+                                <div class="col-lg-2  col-sm-2 col-md-2">
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+
+                                        <div mat-subheader>  <mat-icon mat-list-icon>toys</mat-icon><h2>Dir  {{fullname}}, this are the services you have contract
+                                            with us </h2></div>
+                                            <hr>
+
+                                        <mat-list-item *ngFor="let note of elementcontractservices" appearance="fill">
+                                            <mat-icon mat-list-icon>library_add_check</mat-icon>
+                                            <div mat-line>{{note.name}}</div>
+                                            <div mat-line> {{note.creationdate | date}} </div>
+                                            <hr>
+                                        </mat-list-item>
+                                   
+                                    </div>
+
+
+
+                                </div>
+                            
+                       
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2" data-aos="fade-right">
+                        <div class="section-title">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+
+</ng-template>
+
+
+
+
+<ng-template #elseBlock>
+    <main id="main">
+        <section id="home_nologued" class="login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2" data-aos="fade-up">
+                        <div class="section-title">
+                        </div>
+                    </div>
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="section-title">
+                            <h1>You Must Authenticate. </h1>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-2" data-aos="fade-up">
+                        <div class="section-title">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+</ng-template>

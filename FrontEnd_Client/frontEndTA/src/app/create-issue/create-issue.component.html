@@ -1,0 +1,128 @@
+
+<router-outlet></router-outlet>
+<section id="registerIssue" name="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2" data-aos="fade-up">
+                <div class="section-title">
+                </div>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+
+                <div role="form" class="php-email-form mt-4">
+                    <br /> <br /> <br /> <br />
+                    <div class="row">
+                        <div class="col-lg-2  col-sm-2 col-md-2"></div>
+
+                        <div class="col-lg-8  col-sm-8 col-md-8" data-aos="fade-right">
+
+                            <div class="section-title">
+                                <h2>Create Report </h2>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2  col-sm-2 col-md-2">
+
+                        </div>
+
+                    </div>
+                    <form  [formGroup]="issueData" (ngSubmit)="addIssue()">
+
+                        <div class="row">
+
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Your Address</mat-label>
+                                        <input type="text" matInput placeholder="Ex. Cartago, Jimenez"
+                                            formControlName="address">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6 form-group">
+
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Your Contact Phone</mat-label>
+                                        <input type="tel" matInput placeholder="Ex. 72107738"
+                                            formControlName="contactphone">
+                                    </mat-form-field>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 form-group">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Your Contact Email</mat-label>
+                                        <input type="tel" matInput placeholder="Ex. Karolg10@gmail.com"
+                                            formControlName="contactemail">
+                                    </mat-form-field>
+
+                                </div>
+                                <div class="col-md-6 form-group">
+
+
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Report Service</mat-label>
+                                        <mat-select formControlName="service_id">
+                                            <mat-option *ngFor="let group of contractserviceControl"
+                                                value="{{group.service_id}}">
+                                                {{group.name}}
+
+                                            </mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12 form-group">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Leave a description</mat-label>
+                                        <textarea formControlName="description" matInput
+                                            placeholder="Ex. It makes me feel..."></textarea>
+                                    </mat-form-field>
+
+                                </div>
+
+                               
+                            </div>
+
+
+                            <div class="mb-3">
+                                <div id="errorMessage" class="error-message">
+
+                                </div>
+                                <div id="informationMessage" class="sent-message"></div>
+                                <button type="submit"  mat-raised-button>   Send Report <mat-icon>send</mat-icon></button>
+                            </div>
+
+                
+                          
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-lg-2" data-aos="fade-right">
+                <div class="section-title">
+
+                </div>
+            </div>
+        </div>
+        <a routerLink="/list-issue">
+            <mat-icon mat-list-icon>keyboard_backspace</mat-icon>
+        </a>
+    </div>
+
+</section>

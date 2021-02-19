@@ -1,0 +1,98 @@
+<section id="details" name="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1" data-aos="fade-up">
+                <div class="section-title">
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+
+                <div role="form" class="php-email-form mt-4">
+                    <br /> <br /> <br /> <br />
+                    <div class="row">
+                        <div class="col-lg-2  col-sm-2 col-md-2"></div>
+
+                        <div class="col-lg-8  col-sm-8 col-md-8">
+
+                            <div class="section-title">
+                                <h2>Details Report </h2>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2  col-sm-2 col-md-2">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <hr/>
+                                <table>
+                                    <tr>
+                                        <th>No</th>
+                                        
+                                        <th>Description</th>
+                                      
+                                        <th>Date</th>
+                                       
+                                        <th>Status</th>
+                                       
+                                        <th>Name Service </th>
+                                       
+                                        <th>Comments </th>
+                                      
+                                    </tr>
+
+                                    <tr *ngFor="let dessert of element">
+                                        <td>{{dessert.issue_id}}</td>
+                                       
+                                        <td>{{dessert.description}}</td>
+                                      
+                                        <td>{{dessert.register | date}}</td>
+                                       
+                                        <td>{{dessert.status}}</td>
+                                       
+                                        <td>{{dessert.name}}</td>
+                                        <td>
+                                            <a routerLink="/comments-issue/{{dessert.issue_id}}">
+                                                <mat-icon mat-list-icon>comment</mat-icon>
+                                            </a>
+                                        </td>
+                                       
+                                    </tr>
+                                </table>
+                                <hr/>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="col-lg-1" data-aos="fade-right">
+                <div class="section-title">
+
+                </div>
+            </div>
+        </div>
+        <a routerLink="/list-issue">
+            <mat-icon mat-list-icon>keyboard_backspace</mat-icon>
+        </a>
+    </div>
+
+</section>

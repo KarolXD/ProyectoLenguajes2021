@@ -1,0 +1,148 @@
+<section id="commnets" name="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1" data-aos="fade-up">
+                <div class="section-title">
+                </div>
+            </div>
+
+            <div class="col-lg-10">
+
+                <div role="form" class="php-email-form mt-4">
+                    <br /> <br /> <br /> <br />
+                    <div class="row">
+                        <div class="col-lg-2  col-sm-2 col-md-2"></div>
+
+                        <div class="col-lg-8  col-sm-8 col-md-8">
+
+                            <div class="section-title">
+                                <h2>Comments Report </h2>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-2  col-sm-2 col-md-2">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+
+
+
+
+                                <a id="btnComments" name="btnComments">
+                                    <mat-icon aria-hidden="false">add_box </mat-icon>
+                                    Comments(0)
+                                </a>
+
+                                <section id="addComments">
+                                    <div class="row">
+                                        <label>Leave a comment</label>
+                                        <div class="col-md-12 form-group">
+                                            <form [formGroup]="commentData" (ngSubmit)="addComent()" #formDir="ngForm">
+                                                <textarea formControlName="description" id="textAreaWrite"> </textarea>
+                                                <br />
+                                                <span class="text-danger"
+                                                    *ngIf="commentData.hasError('required', 'description') && formDir.submitted">
+                                                    Description is required.
+                                                </span>
+                                                <br />
+                                                <button type="submit" id="btnTextArea">Save Comment </button>
+                                                |<button id="cancelBtn">Cancel </button>
+                                            </form>
+
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <br /><br /> <br /><br />
+
+                                    <div class="row">
+
+                                        <div class="col-md-12 example-form" *ngFor="let dessert of element">
+
+
+                                            <div *ngIf="dessert.isuser==0">
+                                               
+                                                    <mat-form-field class="example-full-width">
+                                                    <mat-label>{{dessert.typeuser}} - {{ dessert.comment | date}}
+                                                    </mat-label>
+
+                                                    <span matPrefix>
+                                                        <mat-icon matSuffix>supervised_user_circle</mat-icon> &nbsp;
+                                                    </span>
+
+                                                    <textarea id="{{dessert.comment_id}}"   #titleInput  type="text" matInput>{{dessert.description}} </textarea>
+                                                   
+
+                                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                                   
+                                                   
+                                                       <button class='btn btn-warning'  (click)="updateComent(dessert.comment_id,dessert.issue_id,titleInput.value)"  type="button">
+                                                        Save
+                                                    </button>
+
+                                                </mat-form-field>
+
+                                               
+                                            </div>
+
+
+                                            <div *ngIf="dessert.isuser==1">
+
+                                                <mat-form-field class="example-full-width">
+
+                                                    <mat-label>{{dessert.typeuser}} - {{ dessert.comment | date}}
+                                                    </mat-label>
+
+                                                    <span matPrefix>
+                                                        <mat-icon matSuffix>supervised_user_circle</mat-icon> &nbsp;
+                                                    </span>
+
+                                                    <textarea type="text" disabled
+                                                        matInput>{{dessert.description}} </textarea>
+
+
+                                                </mat-form-field>
+
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                        <br />
+                                    </div>
+
+                                </section>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-1" data-aos="fade-right">
+                <div class="section-title">
+
+                </div>
+            </div>
+        </div>
+        <button (click)="goback()">
+            <mat-icon mat-list-icon>keyboard_backspace</mat-icon>
+        </button>
+    </div>
+
+</section>

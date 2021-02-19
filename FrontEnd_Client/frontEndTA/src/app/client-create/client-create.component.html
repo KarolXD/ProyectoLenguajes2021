@@ -1,0 +1,133 @@
+<section id="registerUsers" name="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-up">
+        <div class="section-title">
+        </div>
+      </div>
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+        <div role="form" class="php-email-form mt-4">
+          <div class="row">
+            <div class="col-lg-2  col-sm-2 col-md-2"></div>
+            <div class="col-lg-8  col-sm-8 col-md-8" data-aos="fade-right">
+<br/>
+              <div class="section-title">
+                <h2>Sign Up </h2>
+              </div>
+
+            <br /> <br />
+            </div>
+            <div class="col-lg-2  col-sm-2 col-md-2">
+
+            </div>
+
+          </div>
+          <form [formGroup]="clientData" (ngSubmit)="addClient()" #formDir="ngForm">
+
+            <div class="row">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Your Name "
+                    data-rule="minlen:4" data-msg="Please enter a valid email" />
+                  <span class="text-danger" *ngIf="clientData.hasError('required', 'name') && formDir.submitted">
+                    Name is required.
+                  </span>
+                  <hr />
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" formControlName="firstsurname" placeholder=" First SurName"
+                    data-rule="minlen:4" data-msg="Please enter a valid email" />
+                  <span class="text-danger"
+                    *ngIf="clientData.hasError('required', 'firstsurname') && formDir.submitted">
+                    First Name is required.
+                  </span>
+                  <hr />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" formControlName="secondsurname" placeholder=" Second SurName"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <span class="text-danger"
+                    *ngIf="clientData.hasError('required', 'secondsurname') && formDir.submitted">
+                    Second Name is required.
+                  </span>
+                  <hr />
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" formControlName="email" placeholder="Your Email"
+                    data-rule="email" data-msg="Please enter a valid email" />
+                  <span class="text-danger" *ngIf="clientData.hasError('email', 'email') && formDir.submitted">
+                    Email Invalited.
+                  </span>
+                  <hr />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="password" formControlName="password" class="form-control" placeholder="Your Password"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <span class="text-danger" *ngIf="clientData.hasError('pattern', 'password') && formDir.submitted">
+                    Must be beetween 5 and 8 caracteres.
+                  </span>
+                  <hr />
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" formControlName="address" class="form-control" placeholder="Your Address"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <span class="text-danger" *ngIf="clientData.hasError('required', 'address') && formDir.submitted">
+                    Address is required.
+                  </span>
+                  <hr />
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="tel" formControlName="phone" class="form-control" placeholder="Your Phone"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <span class="text-danger" *ngIf="clientData.hasError('required', 'phone') && formDir.submitted">
+                    Phone is required.
+                  </span>
+                  <hr />
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="tel" formControlName="secondcontact" class="form-control"
+                    placeholder="Your Second Contact" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <span class="text-danger"
+                    *ngIf="clientData.hasError('required', 'secondcontact') && formDir.submitted">
+                    Second Contact is required.
+                  </span>
+                  <hr />
+                </div>
+
+              </div>
+              <div class="mb-3">
+                <div id="errorMessage" class="error-message">
+
+                </div>
+                <div id="informationMessage" class="sent-message"></div>
+              </div>
+
+
+              <button type="submit" class="btn btn-success">Sign Up</button>
+
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="section-title">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
