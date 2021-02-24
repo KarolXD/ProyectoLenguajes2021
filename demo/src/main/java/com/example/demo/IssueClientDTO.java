@@ -28,8 +28,9 @@ public class IssueClientDTO {
     private String status;
     private String contactemail;
     private String contactphone;
+    private String nameservice;
 
-    public IssueClientDTO(int issue_id, int report, String name, String firstsurname, String secondsurname, String email, String phone, String address, String secondcontact, String status, String contactemail, String contactphone) {
+    public IssueClientDTO(int issue_id, int report, String name, String firstsurname, String secondsurname, String email, String phone, String address, String secondcontact, String status, String contactemail, String contactphone,String nameservice) {
         this.issue_id = issue_id;
         this.report = report;
         this.name = name;
@@ -42,6 +43,7 @@ public class IssueClientDTO {
         this.status = status;
         this.contactemail = contactemail;
         this.contactphone = contactphone;
+        this.nameservice=nameservice;
     }
 
 

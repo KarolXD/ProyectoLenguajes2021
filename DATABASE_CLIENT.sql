@@ -7,8 +7,7 @@ select * from Client
 select * from Serviceclient
 select * from Services
 
-
-update client set email='jahanrive3131@gmail.com' where client_id=1004
+update Issue set name='TELEFONIA MOVIL' where issue_id=1001
 
  DBCC CHECKIDENT (Client, RESEED, 0)
 delete from Comment
@@ -121,8 +120,6 @@ CREATE TABLE Serviceclient(
 CONSTRAINT  FK_IdService_ServiceClient FOREIGN KEY ([service_id]) REFERENCES [Service]([service_id]),
 CONSTRAINT FK_IdClient_ServiceClient FOREIGN KEY ([client_id]) REFERENCES Client([client_id]))
 
-SELECT * FROM Comment
-
 
 alter table  Comment alter column [description]   VARCHAR(300)
 CREATE TABLE Comment(
@@ -131,15 +128,14 @@ CREATE TABLE Comment(
 [comment]          DATETIME     NULL,/*Fecha y hora se registro el comentario*/
 [issue_id]          INT           NULL, 
 [isuser]            INT        DEFAULT 0,
-typeUser           VARCHAR(50)       NULL.
+typeUser           VARCHAR(50)       NULL,
 [creationdate]     DATETIME      NULL, 
 [modificationdate] DATETIME      NULL,
 [usercreation]     VARCHAR(100)  NULL,
 [modificationuser] VARCHAR(100)  NULL,
  CONSTRAINT FK_IdIssue_Comment FOREIGN KEY ([issue_id]) REFERENCES Issue([issue_id])
 )
-alter table Comment
-add   isUser int default 0;
+
 
 ------Procedures--------
 

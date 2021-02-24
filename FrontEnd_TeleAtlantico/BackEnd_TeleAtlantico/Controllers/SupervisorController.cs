@@ -37,7 +37,10 @@ namespace BackEnd_TeleAtlantico.Controllers
             List<Supervisor> headers = _context.Supervisors.Select(p => new Supervisor
             {
                 IdSupervisor = p.IdSupervisor,
-                Name = p.Name
+                Name = p.Name,
+                FirstSurname = p.FirstSurname,
+                SecondSurname = p.SecondSurname,
+
             }).ToList();
 
 

@@ -15,16 +15,26 @@ namespace Presentation_TeleAtlantico.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetNameService()
+
+        //does not have those services
+        public async Task<IActionResult> GetNameNotHasSupporterById(int idSupporter)
         {
-            var respuesta = await sendDataService.GetNameService();
+            var respuesta = await sendDataService.GetNameNotHasSupporterById(idSupporter);
+
+            return Ok(respuesta);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetNameHasSupporterById(int idSupporter)
+        {
+            var respuesta = await sendDataService.GetNameHasSupporterById(idSupporter);
 
             return Ok(respuesta);
         }
 
 
 
- 
 
         // GET: ServiceController/Edit/5
         public ActionResult Edit(int id)

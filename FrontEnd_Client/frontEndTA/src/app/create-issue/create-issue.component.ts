@@ -41,7 +41,8 @@ export class CreateIssueComponent implements OnInit {
       creationdate: null,
       modificationdate: null,
       usercreation: null, //ocupo
-      modificationuser: null
+      modificationuser: null,
+      name:null
     })
   }//fin contrustor
   ngOnInit(): void { 
@@ -68,6 +69,18 @@ export class CreateIssueComponent implements OnInit {
     this.issueData.value.contactemail=this.email;
     this.issueData.value.report=1;
     
+
+if(this.issueData.value.service_id==1)
+this.issueData.value.name="TELEFONIA MOVIL";
+
+if(this.issueData.value.service_id==2)
+this.issueData.value.name="CABLE";
+if(this.issueData.value.service_id==3)
+this.issueData.value.name="INTERNET";
+
+if(this.issueData.value.service_id==4)
+this.issueData.value.name="TELEFONIA FIJA";
+
     console.log(this.issueData.value);
     this.rest.addIssueClient(this.issueData.value).subscribe((result) => { this.router.navigate(['issue']); }, (err) => { console.log(err); });
   }

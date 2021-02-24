@@ -39,8 +39,6 @@ namespace Presentation_TeleAtlantico.Controllers
         [HttpGet]
         public IActionResult sendEmail(string body, string email, string subject)
         {
-         //   string email = "ja";
-           // string subject = "TeleAtlantico, informacion sobre su reporte";
             return Ok(sendaDataIssue.SendEmailAsync(body,email,subject));
         }
 
@@ -66,7 +64,7 @@ namespace Presentation_TeleAtlantico.Controllers
         public IActionResult changeSupporterAsigned(int issue_id, int supporter_id)
         {
             string modificationuser = HttpContext.Session.GetString("SessionSupervisorUI");
-            return Ok(sendaDataIssue.changeSupporterAsigned(issue_id, supporter_id, modificationuser));
+            return Ok(sendaDataIssue.changeSupporterAsignedAsync(issue_id, supporter_id, modificationuser));
           
 
         }

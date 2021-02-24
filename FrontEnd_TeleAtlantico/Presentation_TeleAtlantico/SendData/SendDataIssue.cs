@@ -39,7 +39,7 @@ namespace Presentation_TeleAtlantico.SendData
 
         }
 
-        public bool changeSupporterAsigned(int issue_id, int supporter_id,  string modificationsser)
+        public async Task<int> changeSupporterAsignedAsync(int issue_id, int supporter_id,  string modificationsser)
         {
         
             var httpClient = new HttpClient();
@@ -53,12 +53,15 @@ namespace Presentation_TeleAtlantico.SendData
             var apiResponse = responseTask.Result;
             if (apiResponse.IsSuccessStatusCode)
             {
-                return true;
+
+                string result = await apiResponse.Content.ReadAsStringAsync();
+                var respuesta = JsonConvert.DeserializeObject<int>(result);
+                return respuesta;
             }
 
             else
 
-                return false;
+                return 0;
 
         }
 

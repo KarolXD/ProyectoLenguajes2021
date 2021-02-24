@@ -27,6 +27,9 @@ function getIssueClient(issue_id) {
                     document.getElementById('showstatus').innerText = item.status;
                     document.getElementById('showcontactemail').innerText = item.contactemail;
                     document.getElementById('showcontactphone').innerText = item.contactphone;
+                    document.getElementById('showservicename').innerText = item.nameservice;
+
+                    
 
                     document.getElementById('issue_id').value = item.issue_id;
                 
@@ -35,7 +38,7 @@ function getIssueClient(issue_id) {
 
                     document.getElementById('emailsendtoclient').value = item.contactemail;
                     document.getElementById('fullnamee').value = item.name + " " + item.firstsurname + " " + item.secondsurname;
-                    
+
 
 
                 });
@@ -70,6 +73,7 @@ function getIssueClientBySopporter(issue_id) {
                 document.getElementById('showstatus').innerText = item.status;
                 document.getElementById('showcontactemail').innerText = item.contactemail;
                 document.getElementById('showcontactphone').innerText = item.contactphone;
+                document.getElementById('showservicename').innerText = item.nameservice;
 
                 document.getElementById('issue_id').value = item.issue_id;
 

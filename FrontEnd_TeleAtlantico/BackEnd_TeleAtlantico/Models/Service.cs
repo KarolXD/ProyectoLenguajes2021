@@ -9,6 +9,7 @@ namespace BackEnd_TeleAtlantico.Models
     {
         public Service()
         {
+            Issues = new HashSet<Issue>();
             ServiceSupporters = new HashSet<ServiceSupporter>();
         }
 
@@ -19,6 +20,7 @@ namespace BackEnd_TeleAtlantico.Models
         public string UserCreation { get; set; }
         public string ModificationUser { get; set; }
 
+        public virtual ICollection<Issue> Issues { get; set; }
         public virtual ICollection<ServiceSupporter> ServiceSupporters { get; set; }
     }
 }

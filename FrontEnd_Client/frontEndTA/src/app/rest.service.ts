@@ -127,6 +127,7 @@ addComment (comment: any): Observable<any> {
     catchError(this.handleError<any>('addComment'))
   );
 }
+
 updateComment (comment: any, id:number): Observable<any> {
   console.log(endpointcomment + 'update/'+id, JSON.stringify(comment));
 

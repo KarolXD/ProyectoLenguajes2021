@@ -38,7 +38,7 @@ public class IssueController {
         services.save(issue);
 
 
-     api.insertissue(new IssueDTO(issue.getIssue_id(), issue.getReport(),"MEDIA",issue.getStatus(),null,"Sin resolver",null,null,issue.getUsercreation(),null));
+     api.insertissue(new IssueDTO(issue.getIssue_id(), issue.getReport(),"MEDIA",issue.getStatus(),null,"Sin resolver",null,null,issue.getUsercreation(),null,issue.getService_id()));
 
        return new ResponseEntity<Issue>(issue, HttpStatus.OK);
         }catch(NoSuchElementException   e){

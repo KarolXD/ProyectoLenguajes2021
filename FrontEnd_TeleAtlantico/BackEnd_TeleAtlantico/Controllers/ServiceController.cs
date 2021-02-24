@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackEnd_TeleAtlantico.Models;
+using Microsoft.Data.SqlClient;
 
 namespace BackEnd_TeleAtlantico.Controllers
 {
@@ -22,20 +23,52 @@ namespace BackEnd_TeleAtlantico.Controllers
 
 
         [HttpGet]
-        [Route("[action]")]
-        public IEnumerable<Service> GetNameService()
+        [Route("[action]/{idSupporter}")]
+        public IActionResult GetNameNotHasSupporterById(int idSupporter)
         {
-            List<Service> headers = _context.Services.Select(p => new Service
+            try
             {
-                IdService = p.IdService,
-                Name = p.Name
-            }).ToList();
+                var id = new SqlParameter("@idSupporter", idSupporter);
+                var services = _context.Services
+                               .FromSqlRaw($"SP_GetNameNotHasSupporterById @idSupporter", id)
+                               .AsEnumerable();
 
 
-            return headers;
+
+               
+
+                return Ok(services);
+
+            }
+            catch { throw; }
+
+
+
         }
 
-      
+        [HttpGet]
+        [Route("[action]/{idSupporter}")]
+        public IActionResult GetNameHasSupporterById(int idSupporter)
+        {
+            try
+            {
+                var id = new SqlParameter("@idSupporter", idSupporter);
+                var services = _context.Services
+                               .FromSqlRaw($"SP_GetNameHasSupporterById @idSupporter", id)
+                               .AsEnumerable();
+
+
+
+
+
+                return Ok(services);
+
+            }
+            catch { throw; }
+
+
+
+        }
 
 
 

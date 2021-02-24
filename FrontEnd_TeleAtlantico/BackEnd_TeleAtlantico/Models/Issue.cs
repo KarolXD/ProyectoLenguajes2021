@@ -23,7 +23,9 @@ namespace BackEnd_TeleAtlantico.Models
         public DateTime? Modificationdate { get; set; }
         public string Usercreation { get; set; }
         public string Modificationsser { get; set; }
+        public int? IdService { get; set; }
 
+        public virtual Service IdServiceNavigation { get; set; }
         public virtual Supporter IdsupporterNavigation { get; set; }
         public virtual ICollection<Note> Notes { get; set; }
     }

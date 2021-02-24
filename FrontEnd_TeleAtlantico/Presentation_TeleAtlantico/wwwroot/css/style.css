@@ -13,7 +13,7 @@ hr {
     background-color: #009970;
 }
 
- #updateStatus1, #AddNote1, #AddComment1 {
+#updateStatus1, #AddNote1, #AddComment1, #updatingss {
     display: none
 }
 

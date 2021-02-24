@@ -21,7 +21,7 @@ public interface IssueRepository  extends JpaRepository<Issue, Integer> {
     //public Issue findByIssue(int issue_id);
 
 
-    @Query(value="select   new com.example.demo.IssueClientDTO(i.issue_id,i.report, c.name,c.firstsurname,c.secondcontact,c.email,c.phone, c.address, c.secondcontact,i.status,i.contactemail,i.contactphone)  FROM Client c JOIN Issue  i on i.client_id=c.clientId where i.issue_id=:issue_id")
+    @Query(value="select   new com.example.demo.IssueClientDTO(i.issue_id,i.report, c.name,c.firstsurname,c.secondsurname,c.email,c.phone, c.address, c.secondcontact,i.status,i.contactemail,i.contactphone,i.name)  FROM Client c JOIN Issue  i on i.client_id=c.clientId where i.issue_id=:issue_id")
 
 //@Query(value="select   new com.example.demo.IssueClientDTO(i.issue_id,i.report, c.name,c.firstsurname,c.secondcontact,c.email,c.phone, c.address, c.secondcontact,i.status,i.contactemail,i.contactphone)  FROM Client c JOIN Issue  i on i.client_id=c.clientId")
     public List<IssueClientDTO> getJoinInformation(@Param("issue_id") int issue_id);

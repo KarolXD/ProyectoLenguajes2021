@@ -14,14 +14,27 @@ namespace Presentation_TeleAtlantico.SendData
     {
 
 
-        
-   
-
-        public async System.Threading.Tasks.Task<IEnumerable<ServiceUI>> GetNameService()
+        public async System.Threading.Tasks.Task<IEnumerable<ServiceUI>> GetNameHasSupporterById(int idSupporter)
         {
             using (var httpClient = new HttpClient())
             {
-                string url = string.Concat(Constants.Constant.URLService, "/GetNameService");
+                string url = string.Concat(Constants.Constant.URLService, "/GetNameHasSupporterById/" + idSupporter);
+
+                using (var response = await httpClient.GetAsync(url))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    var respuesta = JsonConvert.DeserializeObject<List<ServiceUI>>(apiResponse);
+                    return respuesta;
+                }
+            }
+        }
+
+
+        public async System.Threading.Tasks.Task<IEnumerable<ServiceUI>> GetNameNotHasSupporterById(int idSupporter)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                string url = string.Concat(Constants.Constant.URLService, "/GetNameNotHasSupporterById/" + idSupporter);
 
                 using (var response = await httpClient.GetAsync(url))
                 {

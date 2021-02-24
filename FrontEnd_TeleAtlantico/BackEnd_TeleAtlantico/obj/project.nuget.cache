@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ljI7XZlPBERQFNydVia1yjCmytYFXyrsaNN/dinHYQNXJajONydxro0KAiIu1W29GxAQdEAWi3SR8eGRhrXCIw==",
+  "dgSpecHash": "FNjfDjVV3Mkudwni2Gaupn0cy9G/vRkgDJLR7WCD6n0/cSvDLEbdcOGSJjuCFjsPRAI/HDbV7B+T7uFJ9JdUgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Karol\\Desktop\\ProyectoLenguajes2021TA_true\\FrontEnd_TeleAtlantico\\BackEnd_TeleAtlantico\\BackEnd_TeleAtlantico.csproj",
+  "projectFilePath": "C:\\Users\\Karol\\Desktop\\ProyectoLenguajesTELEATLANTICO\\ProyectoLenguajes2021\\FrontEnd_TeleAtlantico\\BackEnd_TeleAtlantico\\BackEnd_TeleAtlantico.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Karol\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

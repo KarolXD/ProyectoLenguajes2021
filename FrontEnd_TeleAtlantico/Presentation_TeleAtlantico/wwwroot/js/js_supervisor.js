@@ -14,6 +14,7 @@ $('#navsecundario1').click(function (e) {
     document.getElementById('registeredRequest').style.display = 'none';
     document.getElementById('editRequest').style.display = 'none';
     document.getElementById('serviceUser').style.display = 'none';
+    document.getElementById('showNotes').style.display = 'none';
 });
 
 $('#showService').click(function (e) {
@@ -21,6 +22,7 @@ $('#showService').click(function (e) {
     document.getElementById('serviceUser').style.display = 'block';
     document.getElementById('registerUsers').style.display = 'none';
     document.getElementById('registeredRequest').style.display = 'none';
+    document.getElementById('showNotes').style.display = 'none';
 });
 
 $('#navsecundario3').click(function (e) {
@@ -29,6 +31,7 @@ $('#navsecundario3').click(function (e) {
     document.getElementById('registerUsers').style.display = 'none';
     document.getElementById('serviceUser').style.display = 'none';
     document.getElementById('editRequest').style.display = 'none';
+    document.getElementById('showNotes').style.display = 'none';
 });
 
 
@@ -44,9 +47,8 @@ function getNameSupervisor() {
             var html = '';
 
             $.each(result, function (key, item) {
-              
-                //   $("#typesServices").append('<option value=' + item.idService + '>' + item.name + '</option>');
-                html += '<option value=' + item.idSupervisor + '> ' + item.name + '</option>';
+
+                html += '<option value=' + item.idSupervisor + '> ' + item.name + ' ' + item.firstSurname + ' ' + item.secondSurname + '</option>';
             });
 
            
@@ -107,6 +109,8 @@ function insertSupervisor() {
     };
     var result = validarInputs(supervisor.name, supervisor.firstSurname, supervisor.secondSurname, supervisor.email, supervisor.password);
     if (result) { 
+       document.getElementById('informationMessage').style.display = 'none';
+
     $.ajax({
         url: "/Supervisor/InsertSupervisor",
         data: JSON.stringify(supervisor),
@@ -117,11 +121,20 @@ function insertSupervisor() {
             //aca recibo el resultado del backend (datos,objetos,mensajes)
 
             if (result == 1) {
-                alert("registrado");
-                $("body").load("/Supervisor/Index");
+                console.log("Registrado");
+             //   alert("registrado");
+           //     $("body").load("/Supervisor/Index");
+                document.getElementById('informationMessage').style.display = 'block';
                 document.getElementById('informationMessage').innerText = 'Created Supervisor';
+                document.getElementById("informationMessage").style.color = '#009970';
+
+                $('#informationMessage').hide(10000 * 10);
+
             } else {
-                alert("NO registrado");
+                document.getElementById('informationMessage').style.display = 'block';
+                document.getElementById('informationMessage').innerText = ' Supervisor not created';
+                document.getElementById("informationMessage").style.color = 'red';
+                $('#informationMessage').hide(10000 * 10);
             }
         },
         error: function (errorMessage) {
@@ -147,7 +160,9 @@ function AutenticationSupervisor(emailUser, passUser) {
            
             if (result == null) {
                 document.getElementById('messageFailLogin').style.display = 'block';
-                document.getElementById('messageFailLogin').innerText = 'Incorrect dates';
+                document.getElementById('messageFailLogin').innerText = 'Incorrect user y/o password';
+
+                $('#messageFailLogin').hide(10000 * 10);
             }
             else {
                // location.href = "/Supervisor/Index";
@@ -163,29 +178,7 @@ function AutenticationSupervisor(emailUser, passUser) {
    
 }
 
-function getSupervisorById(studentId) {
-    document.getElementById("id_student").value = studentId;
-    $.ajax({
-        type: 'GET',
-        url: "/Home/GetStudentById",
-        data: { "studentId": studentId },
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            console.log(response.name);
-            document.getElementById("name_student").value = response.name;
-            document.getElementById("email_student").value = response.email;
-            document.getElementById("password_student").value = response.password;
 
-
-        },
-        error: function (errorMessage) {
-            alert(errorMessage.responseText);
-        }
-    });
-
-
-}
 
 
 
@@ -211,6 +204,13 @@ $('#goBackfromNotes').click(function (e) {
     document.getElementById('registerUsers').style.display = 'none';
 });
 
+$('#goBackfromServicesAsigned').click(function (e) {
+    document.getElementById('registeredRequest').style.display = 'none';
+    document.getElementById('editRequest').style.display = 'none';
+    document.getElementById('showNotes').style.display = 'none';
+    document.getElementById('serviceUser').style.display = 'none';
+    document.getElementById('registerUsers').style.display = 'block';
+});
 
 
 

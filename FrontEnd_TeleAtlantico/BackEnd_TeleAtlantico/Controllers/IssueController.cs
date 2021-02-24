@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackEnd_TeleAtlantico.Models;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace BackEnd_TeleAtlantico.Controllers
 {
@@ -27,6 +29,7 @@ namespace BackEnd_TeleAtlantico.Controllers
             return await _context.Issues.ToListAsync();
         }
 
+       
 
 
         [Route("[action]")]
@@ -35,6 +38,7 @@ namespace BackEnd_TeleAtlantico.Controllers
         {
             try
            {
+               
                 IEnumerable<Issue> quey = _context.Issues.Select(p => new Issue
                 {
                   IssueId = p.IssueId,
@@ -215,22 +219,30 @@ namespace BackEnd_TeleAtlantico.Controllers
 
         [Route("[action]/{issueId}/{supportusertassigned}/{usermodification}")]
         [HttpGet]
-        public IActionResult SP_UpdateIdSupporterIssue(int IssueId, int supportusertassigned, string usermodification)
+        public async Task<ActionResult<int>> SP_UpdateIdSupporterIssue(int IssueId, int supportusertassigned, string usermodification)
+        
         {
             try
             {
 
-                var result = _context.Database.ExecuteSqlRaw("SP_UpdateIdSupporterIssue {0}, {1}, {2}",
-                                IssueId,
-                               supportusertassigned,
-                               usermodification
-                           );
-                if (result == 0)
-                {
-                    return null;
-                }
 
-                return Ok(result);
+                var paramIssueId = new SqlParameter("@issue_id", IssueId);
+                var paramSupportusertassigned = new SqlParameter("@supportusertassigned", supportusertassigned);
+                var paramUsermodification = new SqlParameter("@modificationsser", usermodification);
+                var RESULT = new SqlParameter
+                {
+                    ParameterName = "RESULT",
+                    Value = 0,
+                    Direction = ParameterDirection.Output
+                };
+
+
+                var changes = await _context.Issues.FromSqlRaw($"SP_UpdateIdSupporterIssue @issue_id,@supportusertassigned,@modificationsser,@RESULT OUTPUT",
+                    paramIssueId, paramSupportusertassigned,paramUsermodification,RESULT).ToArrayAsync();
+             
+                int resultfromsql = (int)RESULT.Value;
+
+                return resultfromsql;
 
             }
             catch { throw; }

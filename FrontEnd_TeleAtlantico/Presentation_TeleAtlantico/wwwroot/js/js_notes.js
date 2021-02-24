@@ -69,8 +69,7 @@ function getNotes(typeUser) {
 
 function updateNote(idNote, issue_id, user) {
 
-    //console.log("idNote" + idNote + ",issue_id" + issue_id + ",isuser" + user);
-
+    
     if (user == 1) {
         var description = document.getElementById(idNote).value;
      //   alert("Descripcion SUPERVISOR => "+description);
@@ -102,7 +101,7 @@ function updateNote(idNote, issue_id, user) {
                     getNotes(0);
                 }
 
-                alert("Nota Actualizada");
+               
             } else {
                 alert("NO Actualizada");
             }
@@ -115,11 +114,19 @@ function updateNote(idNote, issue_id, user) {
 }
 function addNote(user) {
     //1 Supervisor    0 Soportista
-    var issue_id =   document.getElementById("idIssueNotes").value;
+    var issue_id = document.getElementById("idIssueNotes").value;
     var description = document.getElementById("descriptionNotes").value;
+  
+
+    if (description.length < 1) {
+        document.getElementById("textNote1").innerHTML = "UPS. The note it's empty";
+        document.getElementById("textNote1").style.color = 'red';
+        $('#textNote1').hide(10000 * 10);
+    } else { 
+
     $.ajax({
         url: "/Note/insertNote",
-        data: { "issue_id": issue_id,"description": description,"user":user},
+        data: { "issue_id": issue_id, "description": description, "user": user },
         type: "GET",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -134,7 +141,7 @@ function addNote(user) {
                     getNotes(0);
                 }
 
-                alert("Nota Regidtrada");
+              
             } else {
                 alert("NO registrado");
             }
@@ -143,6 +150,7 @@ function addNote(user) {
             alert(errorMessage.responseText);
         }
     });
+}
 
 }
 
@@ -150,26 +158,31 @@ function addComments() {
 
     var issue_id = document.getElementById("idIssueComments").value;
     var description = document.getElementById("descriptionComments").value;
-    $.ajax({
-        url: "/Note/insertComment",
-        data: { "issue_id": issue_id, "description": description },
-        type: "GET",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            //aca recibo el resultado del backend (datos,objetos,mensajes)
+    if (description.length < 1) {
+        document.getElementById("textComments").innerHTML = "The comment it's empty";
+        document.getElementById("textComments").style.color = 'red';
+    } else {
+        $.ajax({
+            url: "/Note/insertComment",
+            data: { "issue_id": issue_id, "description": description },
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                //aca recibo el resultado del backend (datos,objetos,mensajes)
 
-            if (result == 1) {
-                getComments();
-                alert("Comment registrado");
-            } else {
-                alert("Comment NO registrado");
+                if (result == 1) {
+                    getComments();
+                    //   alert("Comment registrado");
+                } else {
+                    alert("Comment NO registrado");
+                }
+            },
+            error: function (errorMessage) {
+                alert(errorMessage.responseText);
             }
-        },
-        error: function (errorMessage) {
-            alert(errorMessage.responseText);
-        }
-    });
+        });
+    }
 }
 
 
@@ -190,7 +203,7 @@ function updateComments(comment_id,issue_id,user) {
 
             if (result == 1) {
                 getComments();
-                alert("Comment update");
+           
             } else {
                 alert("Comment NO update");
             }

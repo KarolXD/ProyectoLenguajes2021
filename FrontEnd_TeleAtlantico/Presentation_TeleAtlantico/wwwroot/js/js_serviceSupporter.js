@@ -28,10 +28,13 @@ function AddServiceSupporter() {
         dataType: "json",
         success: function (result) {
 
-            if (result !=null) {
-                alert("Servicio Registrado");
+            if (result != null) {
+                getNameHasSupporterById(idSupporters);
+               
             } else {
-                alert("Servicio No  Registrado" );
+                document.getElementById("textAssignService").innerHTML = "Service not asigned";
+                document.getElementById("textAssignService").style.color = 'red';
+                $('#textAssignService').hide(10000 * 10);
             }
         },
         error: function (errorMessage) {

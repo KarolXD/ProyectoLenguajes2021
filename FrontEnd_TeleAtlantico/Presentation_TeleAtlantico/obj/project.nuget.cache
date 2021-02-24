@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qY5ThrddiQFUNEXM8MTrL2yGiUKffBKVsZY7q2hfKovXUiRvWuKZb3hupnLQTVA8GtwY9nT9gZFi7kCOiy80RA==",
+  "dgSpecHash": "IJfq/7wxoDrIdGzj8aA5YhSMW3VeutltjdoKIXl4GJAHcAzQLjK3JYUM88EMna1tAlHORCyJtANqhj9AGJs3Dg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Karol\\Desktop\\ProyectoLenguajes2021TA_true\\FrontEnd_TeleAtlantico\\Presentation_TeleAtlantico\\Presentation_TeleAtlantico.csproj",
+  "projectFilePath": "C:\\Users\\Karol\\Desktop\\ProyectoLenguajesTELEATLANTICO\\ProyectoLenguajes2021\\FrontEnd_TeleAtlantico\\Presentation_TeleAtlantico\\Presentation_TeleAtlantico.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -22,9 +22,14 @@ namespace Presentation_TeleAtlantico.Models
         public string status { get; set; }
         public string contactemail { get; set; }
         public string contactphone { get; set; }
+        public string nameservice { get; set; }
 
+
+        
         public IssueClient() { }
-        public IssueClient(int issue_id, int report, string name, string firstsurname, string secondsurname, string email, string phone, string address, string secondcontact, string status, string contactemail, string contactphone)
+        public IssueClient(int issue_id, int report, string name, string firstsurname, string secondsurname,
+            string email, string phone, string address, string secondcontact, string status, string contactemail, 
+            string contactphone, string nameservice)
         {
             this.issue_id = issue_id;
             this.report = report;
@@ -38,6 +43,7 @@ namespace Presentation_TeleAtlantico.Models
             this.status = status;
             this.contactemail = contactemail;
             this.contactphone = contactphone;
+            this.nameservice = nameservice;
         }
 
     }

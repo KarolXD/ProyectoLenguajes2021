@@ -26,7 +26,7 @@ namespace BackEnd_TeleAtlantico
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+          
 
             services.AddCors(options =>
             {

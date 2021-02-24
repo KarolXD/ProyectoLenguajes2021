@@ -20,9 +20,21 @@ namespace BackEnd_TeleAtlantico.Controllers
             _context = new User_TA_2021Context();
         }
 
+    //    [Route("[action]")]
+    //    [HttpGet]
+    //    Using Include that is the similar  using join
+    //    public IEnumerable<Supporter> join()
+    //{
+    //    List<Supporter> authors = _context.Supporters.Include(a => a.Issues.Select(
+    //       p => p.Clasification
+
+    //        )).ToList();
+
+    //    return authors;
+    //}
 
 
-        [HttpGet]
+    [HttpGet]
         [Route("[action]/{email}/{password}")]
         public Supporter Autentication(string email, string password)
         {
@@ -41,6 +53,8 @@ namespace BackEnd_TeleAtlantico.Controllers
             {
                 IdSupporter = p.IdSupporter,
                 Name = p.Name,
+                FirstSurname  = p.FirstSurname,
+                SecondSurname = p.SecondSurname,
               AsignedAsSupervisor = p.AsignedAsSupervisor
             }).ToList();
 
@@ -57,9 +71,9 @@ namespace BackEnd_TeleAtlantico.Controllers
             List<Supporter> headers = _context.Supporters.Select(p => new Supporter
             {
                 IdSupporter = p.IdSupporter,
-                Name = p.Name + " "+p.FirstSurname+" " +p.SecondSurname,
-               // FirstSurname = p.FirstSurname,
-              //  SecondSurname = p.SecondSurname,
+                Name = p.Name ,
+                FirstSurname = p.FirstSurname,
+               SecondSurname = p.SecondSurname,
                 AsignedAsSupervisor = p.AsignedAsSupervisor
 
 

@@ -14,9 +14,13 @@ public class IssueDTO  implements Serializable {
     private Date Register;
     private String Resolution="SIN RESOLVER";
 
+
+    private int IdService;
+
+
     public IssueDTO(){}
     public IssueDTO(int issueId, int report, String clasification, String status, Date register, String resolution,
-                     Date creationDate, Date modificationDate, String userCreation, String modificationUser) {
+                     Date creationDate, Date modificationDate, String userCreation, String modificationUser,int idService) {
         IssueId = issueId;
         Report = report;
         Clasification = clasification;
@@ -28,6 +32,7 @@ public class IssueDTO  implements Serializable {
         ModificationDate = modificationDate;
         UserCreation = userCreation;
         ModificationUser = modificationUser;
+        IdService=idService;
     }
 
     private Date CreationDate;
@@ -116,4 +121,15 @@ public class IssueDTO  implements Serializable {
     public void setModificationUser(String modificationUser) {
         ModificationUser = modificationUser;
     }
+
+
+    public int getIdService() {
+        return IdService;
+    }
+
+    public void setIdService(int idService) {
+        IdService = idService;
+    }
+
+
 }

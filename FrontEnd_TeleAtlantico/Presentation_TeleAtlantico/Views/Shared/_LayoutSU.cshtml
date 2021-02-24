@@ -314,48 +314,49 @@
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" name="name_users" id="name_users" placeholder="Your Name " data-rule="minlen:4" data-msg="Please enter a valid email" />
+                                            Name:
+                                            <input type="text" class="form-control"  autocomplete="off" name="name_users" id="name_users" placeholder="Your Name " data-rule="minlen:4" data-msg="Please enter a valid email" />
                                             <div class="validate"></div>
                                             <hr />
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" name="first_surname" id="first_surname" placeholder=" First SurName" data-rule="minlen:4" data-msg="Please enter a valid email" />
+                                            First SurName:
+                                            <input type="text" class="form-control" autocomplete="off" name="first_surname" id="first_surname" placeholder=" First SurName" data-rule="minlen:4" data-msg="Please enter a valid email" />
                                             <div class="validate"></div>
                                             <hr />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <input type="text" name="second_surname" class="form-control" id="second_surname" placeholder=" Second SurName" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                            Second SurName:
+                                            <input type="text" name="second_surname" autocomplete="off" class="form-control" id="second_surname" placeholder=" Second SurName" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                             <div class="validate"></div>
                                             <hr />
                                         </div>
 
                                         <div class="col-md-6 form-group">
-                                            <input type="email" class="form-control" name="email_users" id="email_users" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                            Email:
+                                            <input type="email" class="form-control" autocomplete="off" name="email_users" id="email_users" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                                             <div class="validate"></div>
                                             <hr />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <input type="password" name="password_user" class="form-control" id="password_user" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                            Password:
+                                            <input type="password" name="password_user" autocomplete="off" class="form-control" id="password_user" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                             <div class="validate"></div>
                                             <hr />
                                         </div>
                                         <div class="col-md-6 form-group" id="TypesSupervisor">
+                                            Asigned Supervisor:
                                             <select class="form-control" id="TypesSupervisores" name="TypesSupervisores">
                                             </select>
                                             <hr />
                                         </div>
 
                                     </div>
-                                    <div class="mb-3">
-                                        <div id="errorMessage" class="error-message">
-                                            <i class="bx bxs-like bx-burst"></i>
-                                        </div>
-                                        <div id="informationMessage" class="sent-message"><i class="bx bx-like"></i>  </div>
-                                    </div>
+
                                     <div class="row">
 
 
@@ -377,13 +378,23 @@
                                                 <label class="form-check-label" for="addasSupervidor" id="addasSupervidor">
                                                     Asigned As Supervidor
                                                 </label>
+                                                <hr />
                                             </div>
-                                            <hr />
+                                          
                                         </div>
 
 
                                     </div>
 
+                                    <div class="mb-3">
+                                        <div id="errorMessage" class="error-message">
+                                            <i class="bx bxs-like bx-burst"></i>
+                                        </div>
+                                        
+                                        <div id="informationMessage" class="sent-message"> <i class="bx bx-like"></i>  </div>
+                                    </div>
+
+                                    <br>
                                     <button type="submit" class="btn btn-success" onclick="insertUsuario()">Sign Up</button>
 
                                 </div>
@@ -412,6 +423,7 @@
 
                 <div class="container">
                     <div class="row">
+                        <a id="goBackfromServicesAsigned" href="javascript:void(0);"> Go back </a>
                         <div class="col-lg-4" data-aos="fade-up">
                             <div class="section-title">
                             </div>
@@ -422,10 +434,10 @@
                             <div role="form" class="php-email-form mt-4">
                                 <div class="row">
                                     <div class="col-lg-2  col-sm-2 col-md-2"></div>
-                                    <div class="col-lg-8  col-sm-8 col-md-8" data-aos="fade-right">
+                                    <div class="col-lg-2  col-sm-8 col-md-2" data-aos="fade-right">
                                         <br />
                                         <div class="section-title">
-                                            <h2>Asigned Service</h2>
+                                            <h2>Assign Service</h2>
                                             <hr />
                                             <br />
                                         </div>
@@ -437,27 +449,34 @@
                                 </div>
                                 <div class="row">
                                     <hr />
-                                    <h3> Asigned some service to Users </h3>
+                                    <h4> List of Services, this Supporter provides </h4>
                                     <hr />
-                                    <br />
+
+                                    <div id="getServiceHasSupporter"> </div>
+                                    <br />  <br />
                                     <div class="row">
 
                                         <div class="col-md-6 form-group">
                                             Name Supporter
-                                            <select class="form-control" id="TypesSupporter" name="TypesSupporter">
+                                            <hr>
+                                            <select class="form-control usersupporter" id="TypesSupporter" name="TypesSupporter" onchange="loadService(value);">
                                             </select>
 
 
                                         </div>
                                         <div class="col-md-6 form-group" id="typesService">
-                                            Name Services
+                                            Assign this Service
+                                            <hr>
                                             <select class="form-control mul-selec" id="typesServices" name="typesServices">
                                             </select>
                                         </div>
                                         <br />
                                     </div>
-                                    <br /><br />  <br /><br />  <br />
-                                    <button type="submit" class="btn btn-success" onclick="AddServiceSupporter()">Add Service</button>
+                                    <br /><br />
+
+                                    <br /><br />
+                                    <p class="text" id="textAssignService"> </p><br />
+                                  <button type="submit" class="btn btn-success" onclick="AddServiceSupporter()">Assign</button>
 
                                 </div>
 
@@ -494,6 +513,8 @@
                                 <div class="row">
                                     <div class="d-flex col 4"></div>
                                     <div class="d-flex col 4">
+                                        Filter By:
+                                        <br>
                                         <select class="form-select" onclick="filterIssue()"  id="filterIssue" name="filterIssue"  placeholder="Search" aria-label="Search"><option value="status"> STATUS</option> <option value="clasification"> CLASIFICATION</option> </select>
 
                                     </div>
@@ -504,12 +525,12 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col"># Report</th>
-                                            <th scope="col">User Asigned</th>
+                                            <th scope="col">Report</th>
+                                            <th scope="col">User Assigned</th>
                                             <th scope="col">Clasification  </th>
                                             <th scope="col">Status  </th>
                                             <th scope="col">Registered </th>
-                                            <th scope="col">Actions  </th>
+                                            <th scope="col">Details  </th>
 
                                         </tr>
                                     </thead>
@@ -535,7 +556,7 @@
 
                                     <br /><br /><br />
                                     <hr />
-                                    <i class="bx bx-chevron-right"></i><Label> # Reporte </Label>
+                                    <i class="bx bx-chevron-right"></i><Label> #Reporte </Label>
                                     <p id="showreport">  </p>
                                     <hr />
 
@@ -582,6 +603,13 @@
                                     <hr />
 
 
+                                    <i class="bx bx-chevron-right"></i> <Label> Service Reported </Label>
+                                    <p id="showservicename"> </p>
+                                    <hr />
+
+                                    <div class="updatingss" id="updatingss">
+                                        <p id="updatings"> </p>
+                                    </div>
 
                                 </div>
                                 <div class="col-4">
@@ -596,44 +624,45 @@
                                     <i class="bx bx-chevron-right"></i><label>Options for edit</label>
                                     <hr />
 
-
-
-                                    <a id="AssignedUser"> <img src="~/img/add-user.png" /> Asigned User Sopporter </a>
-
-
-                                    <div id="addUserForRequest">
+                                
+                                    <a href="javascript:void(0);" id="AssignedUser"> <img src="~/img/add-user.png" /> Asigned User Supporter </a>
+                                    <br>
+                                     <div id="addUserForRequest">
                                         <hr />
-                                        <select class="form-select" id="TypesSupporterSU" name="TypesSupporterSU">
+                                        <select class="form-select usersupporter" id="TypesSupporterSU" name="TypesSupporterSU">
                                         </select>
                                         <hr />
-                                        <button type="submit" class="btn btn-warning" onclick="changeuserasigned()"> Assigned User</button>
+                                        <button class="btn btn-warning" onclick="changeuserasigned()"> Assigned </button>
                                     </div>
 
                                     <hr />
 
 
-                                    <a href="javascript:void(0);" id="status">  <img src="~/img/loop.png" />  Update Status</a>
+                                    <a href="javascript:void(0);" id="status">  <img src="~/img/check.png" />  Update Status</a>
+                                    <br>
                                     <div id="updateStatus" data-aos="fade-up">
-
+                                        <hr />
 
 
                                         <select class="form-select" id="statuss" name="statuss" aria-label=".form-select-lg example">
-                                            <option selected>Seleccione</option>
+
                                             <option value="ASIGNADO">Asignado</option>
                                             <option value="SIN ASIGNAR">SIN ASIGNAR</option>
 
                                         </select>
 
                                         <hr />
-                                        <button class="btn btn-warning" onclick="changestatus(1)"> Update Status</button>
+                                        <button class="btn btn-warning" onclick="changestatus(1)"> Update </button>
                                     </div>
 
 
                                     <hr />
-                                    <a href="javascript:void(0);" id="Clasification">  <img src="~/img/loop.png" />  Update Priority</a>
+                                    <a href="javascript:void(0);" id="Clasification">  <img src="~/img/priority.png" />  Update Priority</a>
+                                    <br>
                                     <div id="updateClasification">
+                                        <hr />
                                         <select class="form-select" id="clasification" name="clasification">
-                                            <option selected>Priority</option>
+
                                             <option value="ALTA">Alta</option>
                                             <option value="MEDIA">Media</option>
                                             <option value="BAJA">Baja</option>
@@ -644,7 +673,7 @@
 
                                     <hr />
 
-                                    <a href="javascript:void(0);" id="clickNotes" onclick="getNotes(1)">    <img src="~/img/comment.png"> Show Notes  </a>
+                                    <a href="javascript:void(0);" id="clickNotes" onclick="getNotes(1)">    <img src="~/img/note.png"> Chat's Notes  </a>
 
 
 
@@ -667,18 +696,18 @@
 
                         <div class="col-3"></div>
                         <div class="col-6">
-                            <hr>
-                            <i class="bx bx-chevron-right"></i>  <Label> Write Note to the Supporter</Label>
-                            <hr>
-                            <textarea class="form-control" id="descriptionNotes" rows="2"></textarea>
+                            <textarea placeholder="White an note to the Supporter" class="form-control" id="descriptionNotes" rows="2"></textarea>
 
                             <input hidden id="idIssueNotes" name="idIssueNotes">
-                            <br>
-                            <button type="submit" class="btn btn-primary" onclick="addNote(1)">Add Note </button>
+
+
+                            <p class="textNote1" id="textNote1"> </p>
+
+                            <button type="submit" class="btn btn-secondary" onclick="addNote(1)">  Send</button>
 
                             <hr>
 
-                            <h4> Previws Comments</h4>
+                            <h2> Previws Comments</h2>
                             <hr>
 
                             <div class="chats">

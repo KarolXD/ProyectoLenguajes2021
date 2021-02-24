@@ -296,11 +296,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group mt-3">
-                                        <input type="email" class="form-control" name="email" id="email_user" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                        <input type="email" autocomplete="off" class="form-control" name="email" id="email_user" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                                         <div class="validate" id="emailInvalid" name="emailInvalid"></div>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <input type="password" name="name" class="form-control" id="name_user" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                        <input type="password" autocomplete="off" name="name" class="form-control" id="name_user" placeholder="Your Password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                         <div class="validate" id="invalideFields" name="invalideFields"></div>
                                     </div>
 
@@ -363,18 +363,19 @@
 
                         <div class="col-3"></div>
                         <div class="col-6">
-                            <hr>
-                            <i class="bx bx-chevron-right"></i>  <Label> Write Note to the Supporter</Label>
-                            <hr>
-                            <textarea class="form-control" id="descriptionNotes" rows="2"></textarea>
+                           
+                            <textarea  placeholder="White an note to the Supervisor" class="form-control" id="descriptionNotes" rows="2"></textarea>
 
                             <input hidden id="idIssueNotes" name="idIssueNotes">
-                            <br>
-                            <button type="submit" class="btn btn-primary" onclick="addNote(0)">Add Note </button>
+                      
+                            <p class="textNote1" id="textNote1"> </p>
+                           
+                            <button  class="btn btn-secondary"  onclick="addNote(0)"> Add Note </button>
 
+                            
                             <hr>
 
-                            <h4> Previws Comments</h4>
+                            <h3> Previws Comments</h3>
                             <hr>
 
                             <div class="chats">
@@ -399,18 +400,17 @@
 
                         <div class="col-3"></div>
                         <div class="col-6">
-                            <hr>
-                            <i class="bx bx-chevron-right"></i>  <Label> Write a Comment to the Client</Label>
-                            <hr>
-                            <textarea class="form-control" id="descriptionComments" rows="2"></textarea>
+                            <textarea placeholder="Write an comment to the client." class="form-control" id="descriptionComments" rows="2"></textarea>
 
                             <input hidden id="idIssueComments" name="idIssueComments">
-                            <br>
-                            <button type="submit" class="btn btn-primary" onclick="addComments()">Add Comments </button>
+                            
+                            <p class="text" id="textComments"> </p>
+                        
+                            <button type="submit" class="btn btn-secondary" onclick="addComments()"> Add Comments </button>
 
 
                             <hr>
-                            <h4> Previws Comments</h4>
+                            <h3> Previws Comments</h3>
                             <hr>
 
                             <div class="chatsCommens">
@@ -483,6 +483,13 @@
                                     <p id="showcontactphone"> </p>
                                     <hr />
 
+                                    <i class="bx bx-chevron-right"></i> <Label> Service Reported </Label>
+                                    <p id="showservicename"> </p>
+                                    <hr />
+                                    <div class="updatingss" id="updatingss">
+                                        <p id="updatings"> </p>
+                                    </div>
+
                                     <input hidden type="number" id="issue_id" name="issue_id">
 
 
@@ -494,54 +501,34 @@
                                     <i class="bx bx-chevron-right"></i><label>Options for edit</label>
                                     <hr />
 
-                                    <a href="javascript:void(0);" id="status1">  <img src="~/img/loop.png" />  Update Status</a>
+                                    <a href="javascript:void(0);" id="status1">  <img src="~/img/check.png" />  Update Status</a>
+                                    <br>
                                     <div id="updateStatus1" data-aos="fade-up">
-
+                                        <hr>
                                         <select class="form-select" id="statuss" name="statuss">
                                             <option selected>Seleccione</option>
-                                            <option value="EN PROCESO">En Proceso</option>
+                                            <option value="EN PROCESO">En Proceso </option>
                                             <option value="RESUELTO">Resuelto</option>
 
                                         </select>
 
                                         <br />
-                                        <button class="btn btn-warning" onclick="changestatus(0)"> Update Status</button>
+                                        <button class="btn btn-warning" onclick="changestatus(0)"> Update </button>
                                     </div>
 
                                     <hr />
 
 
-                                    <a href="javascript:void(0);" id="clickNotesSO" onclick="getNotes(0)"> <img src="~/img/comment.png"> Show Notes </a>
+                                    <a href="javascript:void(0);" id="clickNotesSO" onclick="getNotes(0)"> <img src="~/img/note.png"> Chat's Notes </a>
 
 
-                                    @*
-                                                       <a href="javascript:void(0);" id="Note1"> <img src="~/img/addFile.png" /> Add Note</a>
-
-                                                    <div id="AddNote1" data-aos="fade-up">
-                        <br>
-                        <textarea class="form-control" id="" rows="3"></textarea>
-                        <br />
-                        <button> Add Note</button>
-                        <br>
-
-                    </div>*@
 
 
                                     <hr />
 
-                                    <a href="javascript:void(0);" id="clickComments" onclick="getComments()"> <img src="~/img/comment.png"> Show Comments </a>
+                                    <a href="javascript:void(0);" id="clickComments" onclick="getComments()"> <img src="~/img/comment2.png">  Chat's Comment </a>
 
-                                    @*<a href="javascript:void(0);" id="Comment1"> <img src="~/img/addFile.png" />  Add Comment</a>
-
-
-                    <div id="AddComment1" data-aos="fade-up">
-                        <br>
-                        <textarea class="form-control" id="" rows="3"></textarea>
-                        <br />
-                        <button> Add Comment</button>
-                        <br>
-
-                    </div>*@
+     
 
                                     <hr />
                                 </div>
@@ -565,12 +552,12 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Número de Solicitud</th>
-                                            <th scope="col">User Asigned</th>
+                                            <th scope="col">Report</th>
+                                            <th scope="col">User Assigned</th>
                                             <th scope="col">Clasification  </th>
                                             <th scope="col">Status  </th>
-                                            <th scope="col">Registered   (Time) </th>
-                                            <th scope="col">Actions  </th>
+                                            <th scope="col">Registered  </th>
+                                            <th scope="col">Details  </th>
 
                                         </tr>
                                     </thead>

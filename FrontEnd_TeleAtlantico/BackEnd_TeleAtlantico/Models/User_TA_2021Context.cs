@@ -54,6 +54,8 @@ namespace BackEnd_TeleAtlantico.Models
                     .HasColumnType("datetime")
                     .HasColumnName("creationdate");
 
+                entity.Property(e => e.IdService).HasColumnName("idService");
+
                 entity.Property(e => e.Idsupporter).HasColumnName("idsupporter");
 
                 entity.Property(e => e.Modificationdate)
@@ -86,6 +88,11 @@ namespace BackEnd_TeleAtlantico.Models
                     .IsUnicode(false)
                     .HasColumnName("usercreation");
 
+                entity.HasOne(d => d.IdServiceNavigation)
+                    .WithMany(p => p.Issues)
+                    .HasForeignKey(d => d.IdService)
+                    .HasConstraintName("FK__Issue__idService__6FE99F9F");
+
                 entity.HasOne(d => d.IdsupporterNavigation)
                     .WithMany(p => p.Issues)
                     .HasForeignKey(d => d.Idsupporter)
@@ -112,7 +119,7 @@ namespace BackEnd_TeleAtlantico.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(100)
+                    .HasMaxLength(300)
                     .IsUnicode(false);
 
                 entity.Property(e => e.NoteTime).HasColumnType("datetime");

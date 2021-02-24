@@ -4,12 +4,31 @@ USE User_TA_2021
 select * from Issue
 select * from Supporter
 select * from Supervisor
+delete from Supervisor where name='888'
+
+select * from Issue
 select * from Note
+select * from Service
+select * from Service_Supporter
+
+CREATE PROCEDURE SP_GetNameHasSupporterById(@idSupporter int)
+AS BEGIN
+select * from Service 
+where  IdService   in (
+select IdService from Service_Supporter
+where  IdSupporter=@idSupporter)
+END
+CREATE PROCEDURE SP_GetNameNotHasSupporterById(@idSupporter int)
+AS BEGIN
+select * from Service 
+where  IdService  not in (
+select IdService from Service_Supporter
+where  IdSupporter=@idSupporter)
+END
+
+
+
  DBCC CHECKIDENT (Supporter, RESEED, 0)
-delete from Note
-delete from Issue
-delete from Service_Supporter
-delete from Supporter
 
 
 ALTER PROCEDURE SP_ListAllIssues
@@ -21,16 +40,38 @@ FROM Issue issue
 order by issue.register desc
 END
 
-EXEC SP_ListAllIssues
-CREATE procedure SP_UpdateIdSupporterIssue(@issue_id int, @supportusertassigned int, @modificationsser varchar(60))
-as begin
-update Issue
-set IdSupporter=@supportusertassigned,
-modificationsser=@modificationsser,
-modificationdate=GETDATE()
-where issueId=@issue_id
+
+ALTER procedure SP_UpdateIdSupporterIssue(@issue_id int, @supportusertassigned int, @modificationsser varchar(60), @RESULT INT OUTPUT)
+As begin  SELECT * FROM Issue where issueId=@issue_id
+IF EXISTS (SELECT idService FROM Issue WHERE issueId=@issue_id AND idService in (
+Select idService from Service_Supporter where IdSupporter=@supportusertassigned ) ) 
+BEGIN
+	PRINT 'Supporter  give this services';
+	update Issue
+	set IdSupporter=@supportusertassigned,
+	modificationsser=@modificationsser,
+	modificationdate=GETDATE()
+	where issueId=@issue_id
+
+	SET @RESULT=1;
+   Select @RESULT;
+END
+ELSE
+BEGIN
+PRINT 'Supporter doesnot give this services';
+  SET @RESULT=2;
+   Select @RESULT;
+END  
 end
- 
+
+ SELECT * FROM Issue
+  SELECT * FROM Service
+  SELECT IdService,IdSupporter FROM Service_Supporter group by IdSupporter,IdService
+  DECLARE  @RESULT INT
+ EXEC SP_UpdateIdSupporterIssue 1, 1001,'Bryan Montenegro',@RESULT OUTPUT
+
+ --issue 1 INTERNET
+ --BRYAN NO DA SERVICIO DE INTERNET
 CREATE procedure SP_UpdateClasificationIssue(@issue_id int, @Clasification varchar(60), @modificationsser varchar(60))
 as begin
 update Issue
@@ -38,19 +79,24 @@ set Clasification= @Clasification,
 modificationsser=@modificationsser,
 modificationdate=GETDATE()
 where issueId=@issue_id
+
 end
 
 
 
-CREATE procedure SP_UpdateStatusIssue(@issue_id int, @status varchar(50), @modificationsser varchar(60))
+alter procedure SP_UpdateStatusIssue(@issue_id int, @status varchar(50), @modificationsser varchar(60))
 as begin
 update issue
 set status=@status,
 modificationsser=@modificationsser,
 modificationdate=GETDATE()
 where issueId=@issue_id
-end
 
+if @status ='RESUELTO' begin
+update issue set resolution='Resuelto'
+where issueId=@issue_id
+end
+end
 
 exec SP_AsignedSupervidor
 CREATE procedure SP_AsignedSupervidor
@@ -124,23 +170,26 @@ issueId              INT PRIMARY KEY,
 [register]              DATETIME     NULL,/*Fecha y hora ingreso solicitud*/
 [resolution]            VARCHAR(100) NULL,
 [idsupporter]           INT            DEFAULT NULL,
+[idService]             INT           NULL,
 [creationdate]          DATETIME      NULL, 
 [modificationdate]      DATETIME      NULL,
 [usercreation]          VARCHAR(50)  NULL,
 [modificationsser]      VARCHAR(50)  NULL,
+ FOREIGN KEY ([idService]) REFERENCES Service([idService]),
 CONSTRAINT FK_IdSupporter_Issue FOREIGN KEY ([IdSupporter]) REFERENCES Supporter([IdSupporter]));
-select * from Note
-
-delete from Note where idNote=3
-insert into Note  values('Si, estoy en procesos de hacerlo', getDate(),108,0,'Sopporter',getdate(),null,'Daniela Mata',null)
-
-
-update Note
-set UserCreation='Bryanmontenegro', NoteTime='2021-02-18 01:45:45.000',
-CreationDate='2021-02-18 01:46:45.000' where IdNote=3
 
 
 
+select * from Issue
+ update issue
+ set idService=2 where issueId=1002
+
+ALTER TABLE Issue
+add idService int 
+ALTER TABLE Issue
+ADD FOREIGN KEY (idService) REFERENCES Service(idService);
+
+SELECT * FROM Service
 
 alter table  Note
 alter column [Name]   VARCHAR(300)

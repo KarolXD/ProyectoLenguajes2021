@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     getNameSupporter();
-    getNameSupporterBySu();
 });
 
 
@@ -42,6 +41,8 @@ function SignOutSO() {
 
 }
 
+
+//With this, load de select
 function getNameSupporter() {
     $.ajax({
 
@@ -54,32 +55,12 @@ function getNameSupporter() {
 
             $.each(result, function (key, item) {
               
-                html += '<option value=' + item.idSupporter + '> ' + item.name + '</option>';
+                html += '<option value=' + item.idSupporter + '> ' + item.name + " " + item.firstSurname + " " + item.secondSurname + '</option>';
             });
-            $("#TypesSupporter").html(html);
-
-        },
-        error: function (errorMessage) {
-            alert(errorMessage.responseText);
-        }
-    })
-
-}
-function getNameSupporterBySu() {
-    $.ajax({
-
-        url: "/Supporter/GetNameSupporter",
-        type: "GET",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            var html = '';
-
-            $.each(result, function (key, item) {
-
-                html += '<option value=' + item.idSupporter + '> ' + item.name + '</option>';
-            });
-            $("#TypesSupporterSU").html(html);
+          //  $("#TypesSupporter").html(html);
+            $(".usersupporter").html(html);
+            
+       
 
         },
         error: function (errorMessage) {
@@ -89,6 +70,12 @@ function getNameSupporterBySu() {
 
 }
 
+
+
+/**
+ * 
+ *Extraer datos del supporter para enviar correo
+ */
 function getNameSupporterById(supporterId, emailsend, fullname) {
     $.ajax({
         url: "/Supporter/GetNameSupporterById",
@@ -97,11 +84,11 @@ function getNameSupporterById(supporterId, emailsend, fullname) {
         success: function (data) {
             var fullnamesupporter = '';
             $.each(data, function (key, item) {
-                fullnamesupporter += item.name;
+                fullnamesupporter += item.name +" " +item.firstSurname +" "+ item.secondSurname;
             });
             console.log("Full name suporter: "+fullnamesupporter);
 
-            var description = "Buenas estimado/a" + fullname + ", queremos notificarte que el Soportista asignado a tu caso es: Sr/Sra: " + fullnamesupporter;
+            var description = "Buenas estimado/a " + fullname + ", queremos notificarte que el Soportista asignado a tu caso es: Sr/Sra: " + fullnamesupporter;
             var subject = 'Asignacion de Soportista a su reporte';
             sendEmailCustomer(description, emailsend, subject);
 
@@ -112,31 +99,7 @@ function getNameSupporterById(supporterId, emailsend, fullname) {
     });
 }
 
-function getNameSupporterById1(supporterId) {
 
-    $.ajax({
-
-        url: "/Supporter/GetNameSupporterById",
-        type: "GET",
-        data: { "supporterId": supporterId},
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            var html = '';
-       
-            $.each(result, function (key, item) {
-             html += item.name;
-            });
-            console.log(html)
-
-        },
-
-        error: function (errorMessage) {
-            alert(errorMessage.responseText);
-        }
-    })
-
-}
 function insertSupporter() {
     var IdSuppervidor = document.getElementById("TypesSupervisores").value;
     var AsignedAsSupervisor = document.getElementById("addasSupervidorIInput").value;
@@ -153,6 +116,8 @@ function insertSupporter() {
 
     var result = validarInputs(supervisor.name, supervisor.firstSurname, supervisor.secondSurname, supervisor.email, supervisor.password); 
     if (result) { 
+        document.getElementById('informationMessage').style.display = 'none';
+
     $.ajax({
         url: "/Supporter/InsertSupporter",
         data: JSON.stringify(supervisor),
@@ -163,12 +128,19 @@ function insertSupporter() {
             //aca recibo el resultado del backend (datos,objetos,mensajes)
 
             if (result == 1) {
-                alert("registrado y actualizado");
-                $("#login").load("/Supporter/Index");
+              
                 
+                document.getElementById('informationMessage').style.display = 'block';
                 document.getElementById('informationMessage').innerText = 'Created Supporter';
+                document.getElementById("informationMessage").style.color = '#009970';
+
+                $('#informationMessage').hide(10000 * 10);
             } else {
-                alert("NO registrado");
+                document.getElementById('informationMessage').style.display = 'block';
+                document.getElementById('informationMessage').innerText = ' Supporter not created';
+                document.getElementById("informationMessage").style.color = 'red';
+
+                $('#informationMessage').hide(10000 * 10);
             }
 
         },
@@ -194,8 +166,8 @@ function AutenticationSupporter(emailUser, passUser) {
             if (result == null) {
               
             document.getElementById('messageFailLogin').style.display = 'block';
-            document.getElementById('messageFailLogin').innerText = 'Incorrect dates';
-          
+            document.getElementById('messageFailLogin').innerText = 'Incorrect user y/o password';
+                $('#messageFailLogin').hide(10000 * 10);
         }else {
             
                 $("body").load("/Supporter/Index");
