@@ -10,8 +10,8 @@ git add nombrefolder
 o todo git add .
 
 git commit -m "sibiendo proyecto"
+git remote add origin https://github.com/NOMBRE_USUARIO/NOMBRE_PROYECTO.git
 git push -u origin master
-
 
 
 Para actualizar el repo
